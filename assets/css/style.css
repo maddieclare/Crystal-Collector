@@ -6,8 +6,17 @@
     text-align: center;
 }
 
-.crystals {
+.images {
     text-align: center;
+}
+
+.crystals {
+    height: 160px;
+    padding: 20px;
+}
+
+.rainbow-gem {
+    height: 250px;
 }
 
 .random-number {

@@ -11,6 +11,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+    <script src="https://code.jquery.com/jquery.js"></script>
     <title>Document</title>
   </head>
   <body>
@@ -21,14 +22,39 @@
         </div>
       </div>
       <div class="row">
+        <div class="col-md-12 images">
+          <button class="crystal-button" id="red">
+            <img src="assets/images/red.gif" class="crystals" />
+          </button>
+          <button class="crystal-button" id="orange">
+            <img src="assets/images/orange.gif" class="crystals" />
+          </button>
+          <button class="crystal-button" id="yellow">
+            <img src="assets/images/yellow.gif" class="crystals" />
+          </button>
+          <button class="crystal-button" id="green">
+            <img src="assets/images/green.gif" class="crystals" />
+          </button>
+          <button class="crystal-button" id="aqua">
+            <img src="assets/images/aqua.gif" class="crystals" />
+          </button>
+          <button class="crystal-button" id="blue">
+            <img src="assets/images/blue.gif" class="crystals" />
+          </button>
+          <button class="crystal-button" id="purple">
+            <img src="assets/images/purple.gif" class="crystals" />
+          </button>
+        </div>
+      </div>
+      <div class="row">
         <div class="col-md-3">
           <!-- Blank for formatting -->
         </div>
         <div class="col-md-6 instructions">
           <p>You will be given a random number at the start of the game.</p>
           <p>
-            There are four crystals below. By clicking on a crystal you will add
-            a specific amount of points to your score.
+            There are seven crystals above to choose from. By clicking on a
+            crystal you will add a specific amount of points to your score.
           </p>
           <p>
             You win the game by matching your total score to the random number
@@ -46,18 +72,13 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-12 crystals">
-          <span>Crystal 1</span>
-          <span>Crystal 2</span>
-          <span>Crystal 3</span>
-          <span>Crystal 4</span>
+        <div class="col-md-12 random-number">
+          <h3>Number to meet:</h3>
+          <img class="rainbow-gem" src="assets/images/rainbow.gif" />
         </div>
       </div>
       <div class="row">
-        <div class="col-md-6 random-number">
-          <h3>Number to meet:</h3>
-        </div>
-        <div class="col-md-6 current-score">
+        <div class="col-md-12 current-score">
           <h3>Your current score is:</h3>
         </div>
       </div>
@@ -76,5 +97,22 @@
         </div>
       </div>
     </div>
+
+    <script src="assets/javascript/game.js"></script>
+
+    <script>
+      $(document).ready(function() {
+        getRandomNumber(19, 120);
+        randomCrystalNumber(1, 12);
+
+        $("#red").append(crystalNumber[0]);
+        $("#orange").append(crystalNumber[1]);
+        $("#yellow").append(crystalNumber[2]);
+        $("#green").append(crystalNumber[3]);
+        $("#aqua").append(crystalNumber[4]);
+        $("#blue").append(crystalNumber[5]);
+        $("#purple").append(crystalNumber[6]);
+      });
+    </script>
   </body>
 </html>
