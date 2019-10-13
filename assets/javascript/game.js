@@ -1,6 +1,8 @@
+let score = 0;
+let playerSelection;
+let crystalNumber = [];
 let wins = 0;
 let losses = 0;
-let crystalNumber = [];
 
 //  There will be six crystals displayed as buttons on the page.
 
@@ -22,14 +24,14 @@ function randomCrystalNumber(min, max) {
   }
 }
 
-// in HTML, each crystal image is assigned a number from the crystalNumber array using jQuery
+//  in HTML, each crystal image is assigned a number from the crystalNumber array
 
-//     Your game will hide this amount until the player clicks a crystal.
+//  Your game will hide this amount until the player clicks a crystal.
 
-//     When they do click one, update the player's score counter.
-
+//  When they do click one, update the player's score counter.
 function updateScore() {
-  //blah
+  score = score + playerSelection;
+  console.log(score);
 }
 
 //     The player wins if their total score matches the random number from the beginning of the game.

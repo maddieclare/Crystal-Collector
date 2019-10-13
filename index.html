@@ -61,9 +61,6 @@
             given. If your total score goes above the random number, you lose.
           </p>
           <p>
-            The value of each crystal will remain hidden until you click on it.
-          </p>
-          <p>
             The value of each crystal will change every time the game resets.
           </p>
         </div>
@@ -102,16 +99,38 @@
 
     <script>
       $(document).ready(function() {
+        
         getRandomNumber(19, 120);
         randomCrystalNumber(1, 12);
 
-        $("#red").append(crystalNumber[0]);
-        $("#orange").append(crystalNumber[1]);
-        $("#yellow").append(crystalNumber[2]);
-        $("#green").append(crystalNumber[3]);
-        $("#aqua").append(crystalNumber[4]);
-        $("#blue").append(crystalNumber[5]);
-        $("#purple").append(crystalNumber[6]);
+        $("#red").on("click", function() {
+          playerSelection = crystalNumber[0];
+          updateScore();
+        })
+        $("#orange").on("click", function() {
+          playerSelection = crystalNumber[1];
+          updateScore();
+        })
+        $("#yellow").on("click", function() {
+          playerSelection = crystalNumber[2];
+          updateScore();
+        })
+        $("#green").on("click", function() {
+          playerSelection = crystalNumber[3];
+          updateScore();
+        })
+        $("#aqua").on("click", function() {
+          playerSelection = crystalNumber[4];
+          updateScore();
+        })
+        $("#blue").on("click", function() {
+          playerSelection = crystalNumber[5];
+          updateScore();
+        })
+        $("#purple").on("click", function() {
+          playerSelection = crystalNumber[6];
+          updateScore();
+        })
       });
     </script>
   </body>
