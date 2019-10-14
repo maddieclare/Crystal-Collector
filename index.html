@@ -69,14 +69,20 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-12 random-number">
-          <h3>Number to meet:</h3>
-          <img class="rainbow-gem" src="assets/images/rainbow.gif" />
+        <div class="col-md-4">
+          <!-- Blank for formatting -->
+        </div>
+        <div class="col-md-4 rainbow-gem">
+          <h3 class="random-number">Number to meet: </h3>
+        </div>
+        <div class="col-md-4">
+          <!-- Blank for formatting -->
         </div>
       </div>
       <div class="row">
-        <div class="col-md-12 current-score">
-          <h3>Your current score is:</h3>
+        <div class="col-md-12 centered">
+          <h3>Your current score is: </h3>
+          <h3 class="current-score"></h3>
         </div>
       </div>
       <div class="row">
@@ -84,10 +90,10 @@
           <!-- Blank for formatting -->
         </div>
         <div class="col-md-3 total-score">
-          <h4>Total wins:</h4>
+          <h4>Total wins: </h4>
         </div>
         <div class="col-md-3 total-score">
-          <h4>Total losses:</h4>
+          <h4>Total losses: </h4>
         </div>
         <div class="col-md-3">
           <!-- Blank for formatting -->
@@ -98,40 +104,50 @@
     <script src="assets/javascript/game.js"></script>
 
     <script>
-      $(document).ready(function() {
-        
+      // $(document).ready(function() {
         getRandomNumber(19, 120);
+        $(".random-number").append("<br><br><br>" + randomNumber);
         randomCrystalNumber(1, 12);
 
         $("#red").on("click", function() {
           playerSelection = crystalNumber[0];
           updateScore();
-        })
+        });
         $("#orange").on("click", function() {
           playerSelection = crystalNumber[1];
           updateScore();
-        })
+        });
         $("#yellow").on("click", function() {
           playerSelection = crystalNumber[2];
           updateScore();
-        })
+        });
         $("#green").on("click", function() {
           playerSelection = crystalNumber[3];
           updateScore();
-        })
+        });
         $("#aqua").on("click", function() {
           playerSelection = crystalNumber[4];
           updateScore();
-        })
+        });
         $("#blue").on("click", function() {
           playerSelection = crystalNumber[5];
           updateScore();
-        })
+        });
         $("#purple").on("click", function() {
           playerSelection = crystalNumber[6];
           updateScore();
-        })
-      });
+        });
+
+        $(".crystal-button").on("click", function() {
+          $(".current-score").html(score);
+
+          if (score === randomNumber) {
+            playerWins();
+          } else if (score > randomNumber) {
+            playerLoses();
+          }
+        });
+      // });
     </script>
   </body>
 </html>

@@ -3,6 +3,7 @@ let playerSelection;
 let crystalNumber = [];
 let wins = 0;
 let losses = 0;
+let randomNumber = 0;
 
 //  There will be six crystals displayed as buttons on the page.
 
@@ -10,7 +11,7 @@ let losses = 0;
 
 //  function to choose a random number between 19 and 120
 function getRandomNumber(min, max) {
-  let randomNumber = Math.floor(Math.random() * (max - min + 1) + min);
+  randomNumber = Math.floor(Math.random() * (max - min + 1) + min);
   console.log(randomNumber);
 }
 
@@ -37,21 +38,27 @@ function updateScore() {
 //     The player wins if their total score matches the random number from the beginning of the game.
 
 function playerWins() {
-  //blah
+  alert("Winner!");
+  wins++;
+  reset();
 }
 
 //     The player loses if their score goes above the random number.
 
 function playerLoses() {
-  //blah
+  alert("Loser :(")
+  losses++;
+  reset();
 }
 
 //     The game restarts whenever the player wins or loses.
 //     When the game begins again, the player should see a new random number. Also, all the crystals will have four new hidden values.
 //     Of course, the user's score (and score counter) will reset to zero.
-
-function resetGame() {
-  //blah
+function reset() {
+    score = 0;
+    crystalNumber = [];
+    getRandomNumber(19, 120);
+    randomCrystalNumber(1, 12);
 }
 
 //     The app should show the number of games the player wins and loses. To that end, do not refresh the page as a means to restart the game.

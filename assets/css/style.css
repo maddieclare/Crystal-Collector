@@ -6,6 +6,10 @@
     text-align: center;
 }
 
+.centered {
+    text-align: center;
+}
+
 .images {
     text-align: center;
 }
@@ -16,6 +20,11 @@
 }
 
 .rainbow-gem {
+    overflow: visible;
+    background-image: url("../images/rainbow.gif");
+    background-size: 300px;
+    background-position: center;
+    background-repeat: no-repeat;
     height: 250px;
 }
 
