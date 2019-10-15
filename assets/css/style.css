@@ -14,15 +14,19 @@
     text-align: center;
 }
 
+.crystal-button {
+    margin: 10px;
+}
+
 .crystals {
-    height: 160px;
+    height: 80px;
     padding: 20px;
 }
 
 .rainbow-gem {
     overflow: visible;
     background-image: url("../images/rainbow.gif");
-    background-size: 300px;
+    background-size: 200px;
     background-position: center;
     background-repeat: no-repeat;
     height: 250px;

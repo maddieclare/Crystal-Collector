@@ -22,35 +22,35 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-12 images">
+        <div class="col-md-12 centered images">
           <button class="crystal-button" id="red">
-            <img src="assets/images/red.gif" class="crystals" />
+            <img src="assets/images/red.gif" class="centered crystals" />
           </button>
           <button class="crystal-button" id="orange">
-            <img src="assets/images/orange.gif" class="crystals" />
+            <img src="assets/images/orange.gif" class="centered crystals" />
           </button>
           <button class="crystal-button" id="yellow">
-            <img src="assets/images/yellow.gif" class="crystals" />
+            <img src="assets/images/yellow.gif" class="centered crystals" />
           </button>
           <button class="crystal-button" id="green">
-            <img src="assets/images/green.gif" class="crystals" />
+            <img src="assets/images/green.gif" class="centered crystals" />
           </button>
           <button class="crystal-button" id="aqua">
-            <img src="assets/images/aqua.gif" class="crystals" />
+            <img src="assets/images/aqua.gif" class="centered crystals" />
           </button>
           <button class="crystal-button" id="blue">
-            <img src="assets/images/blue.gif" class="crystals" />
+            <img src="assets/images/blue.gif" class="centered crystals" />
           </button>
           <button class="crystal-button" id="purple">
-            <img src="assets/images/purple.gif" class="crystals" />
+            <img src="assets/images/purple.gif" class="centered crystals" />
           </button>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-2">
           <!-- Blank for formatting -->
         </div>
-        <div class="col-md-6 instructions">
+        <div class="col-md-8 instructions">
           <p>You will be given a random number at the start of the game.</p>
           <p>
             There are seven crystals above to choose from. By clicking on a
@@ -64,7 +64,7 @@
             The value of each crystal will change every time the game resets.
           </p>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
           <!-- Blank for formatting -->
         </div>
       </div>
@@ -72,8 +72,9 @@
         <div class="col-md-4">
           <!-- Blank for formatting -->
         </div>
-        <div class="col-md-4 rainbow-gem">
-          <h3 class="random-number">Number to meet: </h3>
+        <div class="col-md-4 rainbow-gem centered">
+          <h3>Number to meet:</h3>
+          <h3 class="random-number"></h3>
         </div>
         <div class="col-md-4">
           <!-- Blank for formatting -->
@@ -81,7 +82,7 @@
       </div>
       <div class="row">
         <div class="col-md-12 centered">
-          <h3>Your current score is: </h3>
+          <h3>Your current score is:</h3>
           <h3 class="current-score"></h3>
         </div>
       </div>
@@ -89,11 +90,13 @@
         <div class="col-md-3">
           <!-- Blank for formatting -->
         </div>
-        <div class="col-md-3 total-score">
-          <h4>Total wins: </h4>
+        <div class="col-md-3 centered">
+          <h4>Total wins</h4>
+          <h4 class="total-wins"></h4>
         </div>
-        <div class="col-md-3 total-score">
-          <h4>Total losses: </h4>
+        <div class="col-md-3 centered">
+          <h4>Total losses</h4>
+          <h4 class="total-losses"></h4>
         </div>
         <div class="col-md-3">
           <!-- Blank for formatting -->
@@ -104,50 +107,46 @@
     <script src="assets/javascript/game.js"></script>
 
     <script>
-      // $(document).ready(function() {
-        getRandomNumber(19, 120);
-        $(".random-number").append("<br><br><br>" + randomNumber);
-        randomCrystalNumber(1, 12);
+      //  Gets intial random numbers.
+      initialize();
 
-        $("#red").on("click", function() {
-          playerSelection = crystalNumber[0];
-          updateScore();
-        });
-        $("#orange").on("click", function() {
-          playerSelection = crystalNumber[1];
-          updateScore();
-        });
-        $("#yellow").on("click", function() {
-          playerSelection = crystalNumber[2];
-          updateScore();
-        });
-        $("#green").on("click", function() {
-          playerSelection = crystalNumber[3];
-          updateScore();
-        });
-        $("#aqua").on("click", function() {
-          playerSelection = crystalNumber[4];
-          updateScore();
-        });
-        $("#blue").on("click", function() {
-          playerSelection = crystalNumber[5];
-          updateScore();
-        });
-        $("#purple").on("click", function() {
-          playerSelection = crystalNumber[6];
-          updateScore();
-        });
+      // Displays initial values in HTML.
+      $(".current-score").html(currentScore);
+      $(".random-number").html("<br><br>" + target);
+      $(".total-wins").html(wins);
+      $(".total-losses").html(losses);
 
-        $(".crystal-button").on("click", function() {
-          $(".current-score").html(score);
+      // Event listener checks which crystal button was clicked by ID and adds score of that crystal to the player's score.
+      $(".crystal-button").on("click", function(event) {
+        crystalClick(event.currentTarget.id);
+      })
 
-          if (score === randomNumber) {
-            playerWins();
-          } else if (score > randomNumber) {
-            playerLoses();
-          }
-        });
-      // });
+//  The game restarts whenever the player wins or loses.
+      $(".crystal-button").on("click", function() {
+        //  The player wins if their total score matches the random number from the beginning of the game.
+        if (currentScore === target) {
+          playerWins();
+          //  Total wins updated via HTML.
+          $(".total-wins").html(wins);
+          initialize();
+          // Scores and target number reset in HTML.
+          $(".random-number").html("<br><br>" + target);
+          $(".current-score").html(currentScore);
+        
+        //  The player loses if their score goes above the random number.
+        } else if (currentScore > target) {
+          playerLoses();
+          //  Total losses updated via HTML.
+          $(".total-losses").html(losses);
+          initialize();
+          // Scores and target number reset in HTML.
+          $(".random-number").html("<br><br>" + target);
+          $(".current-score").html(currentScore);
+        // Score tracking in HTML.
+        } else {
+          $(".current-score").html(currentScore);
+        }
+      });
     </script>
   </body>
 </html>

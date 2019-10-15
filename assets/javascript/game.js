@@ -1,64 +1,54 @@
-let score = 0;
-let playerSelection;
-let crystalNumber = [];
+//  Global variables.
+let crystalNumbers;
+let target;
+let currentScore;
 let wins = 0;
 let losses = 0;
-let randomNumber = 0;
 
-//  There will be six crystals displayed as buttons on the page.
-
-//  The player will be shown a random number at the start of the game (between 19 and 120)
-
-//  function to choose a random number between 19 and 120
+//  Generates a random number between two integers.
 function getRandomNumber(min, max) {
-  randomNumber = Math.floor(Math.random() * (max - min + 1) + min);
-  console.log(randomNumber);
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-//  When the player clicks on a crystal, it will add a specific amount of points to the player's total score (random value between 1 and 12).
+//  Generates a random value for each crystal (between 1 and 12).
+function initialize() {
+  let min = 1;
+  let max = 12;
 
-//  function to generate a random number and store it in crystalNumber array
-function randomCrystalNumber(min, max) {
-  for (let i = 0; i < 7; i++) {
-    crystalNumber.push(Math.floor(Math.random() * (max - min + 1) + min));
-    console.log(crystalNumber);
-  }
+  crystalNumbers = {
+    red: getRandomNumber(min, max),
+    orange: getRandomNumber(min, max),
+    yellow: getRandomNumber(min, max),
+    green: getRandomNumber(min, max),
+    aqua: getRandomNumber(min, max),
+    blue: getRandomNumber(min, max),
+    purple: getRandomNumber(min, max)
+  };
+
+//  Assigns number from getRandomNumber function to target variable.
+  target = getRandomNumber(19, 120);
+  currentScore = 0;
 }
 
-//  in HTML, each crystal image is assigned a number from the crystalNumber array
-
-//  Your game will hide this amount until the player clicks a crystal.
-
-//  When they do click one, update the player's score counter.
-function updateScore() {
-  score = score + playerSelection;
-  console.log(score);
+// Returns integer values stored in crystalNumbers attributes.
+function getCrystalScore(color) {
+  return crystalNumbers[color];
 }
 
-//     The player wins if their total score matches the random number from the beginning of the game.
+//  Adds crystal value to total score.
+function crystalClick(whichCrystal) {
+  currentScore += getCrystalScore(whichCrystal);
+}
 
+//  Player win alert.
 function playerWins() {
   alert("Winner!");
   wins++;
-  reset();
 }
 
-//     The player loses if their score goes above the random number.
-
+//  Player lose alert.
 function playerLoses() {
-  alert("Loser :(")
+  alert("Loser :(");
   losses++;
-  reset();
 }
 
-//     The game restarts whenever the player wins or loses.
-//     When the game begins again, the player should see a new random number. Also, all the crystals will have four new hidden values.
-//     Of course, the user's score (and score counter) will reset to zero.
-function reset() {
-    score = 0;
-    crystalNumber = [];
-    getRandomNumber(19, 120);
-    randomCrystalNumber(1, 12);
-}
-
-//     The app should show the number of games the player wins and loses. To that end, do not refresh the page as a means to restart the game.
