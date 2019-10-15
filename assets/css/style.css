@@ -1,45 +1,64 @@
-.title {
-    text-align: center;
+body {
+  background: url("../images/background.png");
+  color: #ffffff;
+  margin-top: 30px;
 }
 
-.instructions {
-    text-align: center;
+h1 {
+  font-size: 70px;
+  font-family: "Megrim", cursive;
+  text-align: center;
+}
+
+h4 {
+  font-family: "Megrim", cursive;
+}
+
+.fancy {
+  font-family: "Megrim", cursive;
+}
+
+p {
+  font-family: "Quantico", sans-serif;
 }
 
 .centered {
-    text-align: center;
-}
-
-.images {
-    text-align: center;
+  text-align: center;
 }
 
 .crystal-button {
-    margin: 10px;
+  margin: 10px;
+  background-color: rgba(0, 0, 0, 0);
+  border: 0px;
 }
 
 .crystals {
-    height: 80px;
-    padding: 20px;
+  height: 80px;
+  padding: 20px;
 }
 
 .rainbow-gem {
-    overflow: visible;
-    background-image: url("../images/rainbow.gif");
-    background-size: 200px;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 250px;
+  overflow: visible;
+  background-image: url("../images/rainbow.gif");
+  background-size: 200px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 250px;
 }
 
 .random-number {
-    text-align: center;
+  text-align: center;
+  font-family: "Righteous", cursive;
+  font-size: 50px;
+  color: rgba(0, 0, 0, 0.8);
 }
 
 .current-score {
-    text-align: center;
+  text-align: center;
+  font-family: "Quantico", sans-serif;
 }
 
-.total-score {
-    text-align: center;
+.total-wins,
+.total-losses {
+  font-family: "Quantico", sans-serif;
 }
